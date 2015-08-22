@@ -14,11 +14,15 @@ make characters a little smaller than min space between walls for better movemen
 
 
 Enemy:
-Instadeath or hp?
+HP
+DPS?
+movement speed
 
 
 Hero:
 HP
+DPS
+movement speed
 Upgrades with each monster kill for difficulty scaling?
 
 
@@ -37,8 +41,8 @@ Maze:
 1 = enemy
 2 = hero
 3 = wall
-4 = spike
+4 = spike //DPS when standing on
 
 
 Collision:
-Find adajcent positions in maze array and check for collisions.
+Find adjacent positions in maze array and check for collisions.

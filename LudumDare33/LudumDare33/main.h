@@ -11,7 +11,7 @@
 //Include GLFW  
 #include <GLFW\glfw3.h>
 #include "matrixMath.h"
-#include "modelGen.h"
+#include "modelList.h"
 
 // Image importing
 #include <SOIL.h>

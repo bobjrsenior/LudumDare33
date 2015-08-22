@@ -21,9 +21,6 @@
     <ClCompile Include="matrixMath.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="modelGen.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="modelList.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,9 +30,6 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="matrixMath.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="modelGen.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="modelList.h">

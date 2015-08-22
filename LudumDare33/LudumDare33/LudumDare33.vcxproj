@@ -13,13 +13,11 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="matrixMath.c" />
-    <ClCompile Include="modelGen.c" />
     <ClCompile Include="modelList.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
     <ClInclude Include="matrixMath.h" />
-    <ClInclude Include="modelGen.h" />
     <ClInclude Include="modelList.h" />
   </ItemGroup>
   <ItemGroup>

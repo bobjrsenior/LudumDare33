@@ -9,101 +9,26 @@ bool keys[349];
 vec2* mousePos;
 vec3* mouseChange;
 
-//Cube Vertices
-GLfloat cubeVertices[] = {
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-	-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-	-0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-
-	0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-
-	-0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-
-	-1.0f, -1.0f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-	1.0f, -1.0f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-	1.0f, 1.0f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-	1.0f, 1.0f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-	-1.0f, 1.0f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-	-1.0f, -1.0f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f
-};
-
-GLuint elements[] = {
-	0, 1, 2,
-	2, 3, 0
-};
-
-// Quad vertices
-GLfloat quadVertices[] = {
-	-1.0f, 1.0f, 0.0f, 1.0f,
-	1.0f, 1.0f, 1.0f, 1.0f,
-	1.0f, -1.0f, 1.0f, 0.0f,
-
-	1.0f, -1.0f, 1.0f, 0.0f,
-	-1.0f, -1.0f, 0.0f, 0.0f,
-	-1.0f, 1.0f, 0.0f, 1.0f
-};
-
 // Shader sources
 const GLchar* sceneVertexSource = GLSL(
-	in vec3 position;
-	in vec3 color;
-	in vec2 texcoord;
-	out vec3 Color;
-	out vec2 Texcoord;
-	uniform mat4 model;
-	uniform mat4 view;
-	uniform mat4 proj;
-	uniform vec3 overrideColor;
+	in vec2 position;
+	in vec2 texCoord;
+	out vec2 TexCoord;
+	uniform float depth;
 	void main() {
-	   Color = overrideColor * color;
-	   Texcoord = texcoord;
-	   gl_Position = proj * view * model * vec4(position, 1.0);
+		TexCoord = texCoord;
+		gl_Position = vec4(position, depth, 1.0);
 	}
 );
 const GLchar* sceneFragmentSource = GLSL(
-	in vec3 Color;
-	in vec2 Texcoord;
+	in vec2 TexCoord;
 	out vec4 outColor;
 	uniform sampler2D texKitten;
 	void main() {
-	   outColor = vec4(Color, 1.0) * texture(texKitten, Texcoord);
+		outColor = texture(texKitten, TexCoord);
 	}
 );
-
+/*
 // Shader sources
 const GLchar* newSceneVertexSource = GLSL(
 	in vec3 position;
@@ -151,7 +76,7 @@ const GLchar* screenFragmentSource = GLSL(
 	   outColor = vec4(avg, avg, avg, 1.0);
 	}
 );
-
+*/
 int main(void)
 {
 	//Initial variables
@@ -208,109 +133,87 @@ int main(void)
 	}
 
 
-	glEnable(GL_DEPTH_TEST);
 	//Set a background color  
 	glfwSwapInterval(1);
 
-	Model* plane = getPlane();
-
 	//New Drawing Test
 	// Create Vertex Array Object
-	GLuint vaoCube, vaoQuad, vaoPlane;
-	glGenVertexArrays(1, &vaoCube);
-	glGenVertexArrays(1, &vaoQuad);
-	glGenVertexArrays(1, &vaoPlane);
-	//glBindVertexArray(vao);
+	GLuint vaoSquare;
+	glGenVertexArrays(1, &vaoSquare);
+	glBindVertexArray(vaoSquare);
 
 	// Create a Vertex Buffer Object and copy the vertex data to it
-	GLuint vboCube, vboQuad, vboPlane;
-	glGenBuffers(1, &vboCube);
-	glGenBuffers(1, &vboQuad);
-	glGenBuffers(1, &vboPlane);
+	GLuint vboSquare;
+	glGenBuffers(1, &vboSquare);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vboCube);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, vboSquare);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(squareVertices), squareVertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vboQuad);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+	// Create and compile the vertex shader
+	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &sceneVertexSource, NULL);
+	glCompileShader(vertexShader);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vboPlane);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 5 * (*plane->numVerts), plane->vertices, GL_STATIC_DRAW);
+	// Create and compile the fragment shader
+	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &sceneFragmentSource, NULL);
+	glCompileShader(fragmentShader);
 
-	GLuint sceneVertexShader, sceneFragmentShader, sceneShaderProgram;
-	createShaderProgram(sceneVertexSource, sceneFragmentSource, &sceneVertexShader, &sceneFragmentShader, &sceneShaderProgram);
-
-	GLuint screenVertexShader, screenFragmentShader, screenShaderProgram;
-	createShaderProgram(screenVertexSource, screenFragmentSource, &screenVertexShader, &screenFragmentShader, &screenShaderProgram);
-
-	GLuint sceneNewVertexShader, sceneNewFragmentShader, sceneNewShaderProgram;
-	createShaderProgram(sceneVertexSource, newSceneFragmentSource, &sceneNewVertexShader, &sceneNewFragmentShader, &sceneNewShaderProgram);
+	// Link the vertex and fragment shader into a shader program
+	GLuint shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glBindFragDataLocation(shaderProgram, 0, "outColor");
+	glLinkProgram(shaderProgram);
+	glUseProgram(shaderProgram);
 
 	// Specify the layout of the vertex data
-	glBindVertexArray(vaoCube);
-	glBindBuffer(GL_ARRAY_BUFFER, vboCube);
-	specifySceneVertexAttributes(sceneShaderProgram);
+	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
+	glEnableVertexAttribArray(posAttrib);
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
 
-	glBindVertexArray(vaoQuad);
-	glBindBuffer(GL_ARRAY_BUFFER, vboQuad);
-	specifyScreenVertexAttributes(screenShaderProgram);
-
-	glBindVertexArray(vaoPlane);
-	glBindBuffer(GL_ARRAY_BUFFER, vboPlane);
-	specifyNewSceneVertexAttributes(sceneNewShaderProgram);
+	GLint texAttrib = glGetAttribLocation(shaderProgram, "texCoord");
+	glEnableVertexAttribArray(texAttrib);
+	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void*)(2 * sizeof(float)));
 
 	// Load textures
+	glActiveTexture(GL_TEXTURE0);
 	GLuint texKitten = loadTexture("sample.png");
-	GLuint texPuppy = loadTexture("sample2.png");
+	glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
+	//GLuint texPuppy = loadTexture("sample2.png");
 
-	glUseProgram(sceneShaderProgram);
-	glUniform1i(glGetUniformLocation(sceneShaderProgram, "texKitten"), 0);
-	glUniform1i(glGetUniformLocation(sceneShaderProgram, "texPuppy"), 1);
+	//glUseProgram(shaderProgram);
+	//glActiveTexture(GL_TEXTURE0);
+	//glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
 
-	glUseProgram(screenShaderProgram);
-	glUniform1i(glGetUniformLocation(screenShaderProgram, "texFramebuffer"), 0);
 
-	// Create frame buffer
-	GLuint frameBuffer;
-	glGenFramebuffers(1, &frameBuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
-	// Create texture to hold color buffer
-	GLuint texColorBuffer;
-	glGenTextures(1, &texColorBuffer);
-	glBindTexture(GL_TEXTURE_2D, texColorBuffer);
+	//glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
+	//glUniform1i(glGetUniformLocation(shaderProgram, "texPuppy"), 1);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+	//glUseProgram(screenShaderProgram);
+	//glUniform1i(glGetUniformLocation(screenShaderProgram, "texFramebuffer"), 0);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texColorBuffer, 0);
+	//GLint uniModel = glGetUniformLocation(sceneShaderProgram, "model");
 
-	// Create Renderbuffer Object to hold depth and stencil buffers
-	GLuint rboDepthStencil;
-	glGenRenderbuffers(1, &rboDepthStencil);
-	glBindRenderbuffer(GL_RENDERBUFFER, rboDepthStencil);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rboDepthStencil);
-
-	GLint uniModel = glGetUniformLocation(sceneShaderProgram, "model");
+	GLint uniDepth = glGetUniformLocation(shaderProgram, "depth");
 
 	//Set up projection
 	
-	GLint uniView = glGetUniformLocation(sceneShaderProgram, "view");
+	//GLint uniView = glGetUniformLocation(sceneShaderProgram, "view");
 
-	GLint uniProj = glGetUniformLocation(sceneShaderProgram, "proj");
+	//GLint uniProj = glGetUniformLocation(sceneShaderProgram, "proj");
 
-	GLint uniTime = glGetUniformLocation(sceneShaderProgram, "time");
+	//GLint uniTime = glGetUniformLocation(sceneShaderProgram, "time");
 
-	GLint uniColor = glGetUniformLocation(sceneShaderProgram, "overrideColor");
+	//GLint uniColor = glGetUniformLocation(sceneShaderProgram, "overrideColor");
 
-	GLint uni2Model = glGetUniformLocation(sceneShaderProgram, "model");
-
+	//GLint uni2Model = glGetUniformLocation(sceneShaderProgram, "model");
+	
 	//Set up projection
 
-	GLint uni2View = glGetUniformLocation(sceneNewShaderProgram, "view");
+	/*GLint uni2View = glGetUniformLocation(sceneNewShaderProgram, "view");
 
 	GLint uni2Proj = glGetUniformLocation(sceneNewShaderProgram, "proj");
 
@@ -319,8 +222,11 @@ int main(void)
 	GLint uni2Color = glGetUniformLocation(sceneNewShaderProgram, "overrideColor");
 
 	GLint uniScreenLoc = glGetUniformLocation(screenShaderProgram, "screenLoc");
-	vec2* screenLoc;
+	*/
+	
 
+	vec2* screenLoc;
+	
 	GLfloat angle = 0.0f;
 	GLfloat speed = 0.0f;
 
@@ -328,7 +234,7 @@ int main(void)
 	vec3* translationCam2 = makeNewVec3(0.0f, 0.0f, 0.0f);
 
 	vec2* rotationCam = makeNewVec2(0.0f, 0.0f);
-
+	printf("%f\n", squareVertices[1]);
 	//Main Loop  
 	do
 	{
@@ -376,40 +282,27 @@ int main(void)
 		else if (keys[GLFW_KEY_RIGHT]){
 			translationCam2->arr[1] -= .05f;
 		}
-
-
-		if (keys[GLFW_KEY_SPACE]){
-			speed = 1.0f;
-		}
-		angle += speed;
-		if (angle > 360){
-			angle -= 360;
-		}
-		if (speed > .001f){
-			speed /= 1.0f + 1.0f / CLOCKS_PER_SEC;
-		}
-		else{
-			speed = 0.0f;
-		}
-		// Bind our framebuffer and draw 3D scene (spinning cube)
-		glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
-		glBindVertexArray(vaoCube);
-		glEnable(GL_DEPTH_TEST);
-		glUseProgram(sceneShaderProgram);
-
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texKitten);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texPuppy);
-
-		//Clear color buffer  
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+
+		// Bind our framebuffer and draw 3D scene (spinning cube)
+		//	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+		//glBindVertexArray(vaoSquare);
+		//glEnable(GL_DEPTH_TEST);
+		//glUseProgram(shaderProgram);
+
+		//glActiveTexture(GL_TEXTURE0);
+		//glBindTexture(GL_TEXTURE_2D, texKitten);
+		//glActiveTexture(GL_TEXTURE1);
+		//glBindTexture(GL_TEXTURE_2D, texPuppy);
+		//Clear color buffer  
+		
 		//glClearColor((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, 1.0f);
 
 		mat4* model = rotateNewMat4(angle, makeNewVec3(0.0f, 0.0f, 1.0f));
 		translateMat4(model, translationCam2);
-		glUniformMatrix4fv(uniModel, 1, GL_TRUE, &model->x[0]);
+		//glUniformMatrix4fv(uniModel, 1, GL_TRUE, &model->x[0]);
 		mat4* cameraRatation = getNewMat4();
 		
 		if (mouseChange->arr[2] == 2.0f){
@@ -432,22 +325,25 @@ int main(void)
 		vec3* cameraPos = makeNewVec3(-2.0f, 0.0f, 0.0f);
 		addVec3(cameraPos, cameraPos, translationCam1);
 		vec3* lookAtPos = (vec3*)malloc(sizeof(vec3));
-		GLfloat magTemp = magnitudeVec3(lookAtPos);
-		lookAtPos->arr[0] = -cameraPos->arr[0] + (-magTemp * degToRadCos(rotationCam->arr[1]) * degToRadCos(rotationCam->arr[0]));
-		lookAtPos->arr[1] = -cameraPos->arr[1] + (magTemp * degToRadCos(rotationCam->arr[1]) * degToRadSin(rotationCam->arr[0]));
-		lookAtPos->arr[2] = -cameraPos->arr[2] + (magTemp * degToRadSin(rotationCam->arr[1]));
+		//GLfloat magTemp = magnitudeVec3(lookAtPos);
+		//lookAtPos->arr[0] = -cameraPos->arr[0] + (-magTemp * degToRadCos(rotationCam->arr[1]) * degToRadCos(rotationCam->arr[0]));
+		//lookAtPos->arr[1] = -cameraPos->arr[1] + (magTemp * degToRadCos(rotationCam->arr[1]) * degToRadSin(rotationCam->arr[0]));
+		//lookAtPos->arr[2] = -cameraPos->arr[2] + (magTemp * degToRadSin(rotationCam->arr[1]));
+		lookAtPos->arr[0] = 0;
+		lookAtPos->arr[1] = 0;
+		lookAtPos->arr[2] = 0;
 		//printVec3(lookAtPos);
 		mat4* view = lookAtNewMat4(cameraPos,
 			lookAtPos,
 			makeNewVec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniView, 1, GL_FALSE, &view->x[0]);
+		//glUniformMatrix4fv(uniView, 1, GL_FALSE, &view->x[0]);
 		mat4* proj = perspectiveNewMat4(45.0f, ratio, 1.0f, 20.0f);
-		glUniformMatrix4fv(uniProj, 1, GL_FALSE, &proj->x[0]);
+		//glUniformMatrix4fv(uniProj, 1, GL_FALSE, &proj->x[0]);
+		glUniform1f(uniDepth, 0.0f);
+		// Draw square
+		glDrawArrays(GL_QUADS, 0, 4);
 
-		// Draw cube
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-
-		glEnable(GL_STENCIL_TEST);
+		/*glEnable(GL_STENCIL_TEST);
 
 		// Draw floor
 		glBindVertexArray(vaoPlane);
@@ -505,9 +401,9 @@ int main(void)
 		glBindTexture(GL_TEXTURE_2D, texKitten);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texPuppy);
-
+		
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+		
 		getMat4(model);
 		rotateMat4(model, angle, makeNewVec3(0.0f, 0.0f, 1.0f));
 		translateMat4(model, translationCam2);
@@ -567,7 +463,7 @@ int main(void)
 		glUniform2f(uniScreenLoc, screenLoc->arr[0], screenLoc->arr[1]);
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-
+		*/
 		//Swap buffers  
 		glfwSwapBuffers(window);
 		//Get and organize events, like keyboard and mouse input, window resizing, etc...  
@@ -648,17 +544,20 @@ void createShaderProgram(const GLchar* vertSrc, const GLchar* fragSrc, GLuint* v
 	*vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(*vertexShader, 1, &vertSrc, NULL);
 	glCompileShader(*vertexShader);
+	
 
 	// Create and compile the fragment shader
 	*fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(*fragmentShader, 1, &fragSrc, NULL);
 	glCompileShader(*fragmentShader);
 
+
+
 	// Link the vertex and fragment shader into a shader program
 	*shaderProgram = glCreateProgram();
 	glAttachShader(*shaderProgram, *vertexShader);
 	glAttachShader(*shaderProgram, *fragmentShader);
-	glBindFragDataLocation(*shaderProgram, 0, "outColor");
+	//glBindFragDataLocation(*shaderProgram, 0, "outColor");
 	glLinkProgram(*shaderProgram);
 }
 
@@ -666,15 +565,11 @@ void specifySceneVertexAttributes(GLuint shaderProgram)
 {
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
 
-	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
-	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(3 * sizeof(GLfloat)));
-
-	GLint texAttrib = glGetAttribLocation(shaderProgram, "texcoord");
-	glEnableVertexAttribArray(texAttrib);
-	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)));
+	//GLint texAttrib = glGetAttribLocation(shaderProgram, "texcoord");
+	//glEnableVertexAttribArray(texAttrib);
+	//glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
 }
 
 void specifyNewSceneVertexAttributes(GLuint shaderProgram)
