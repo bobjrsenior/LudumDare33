@@ -24,6 +24,9 @@
     <ClCompile Include="modelList.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="maze.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -33,6 +36,9 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="modelList.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maze.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>

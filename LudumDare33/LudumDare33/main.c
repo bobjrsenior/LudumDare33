@@ -234,7 +234,10 @@ int main(void)
 	vec3* translationCam2 = makeNewVec3(0.0f, 0.0f, 0.0f);
 
 	vec2* rotationCam = makeNewVec2(0.0f, 0.0f);
-	printf("%f\n", squareVertices[1]);
+
+	Maze* maze = getNewMaze(20, 20);
+	getPopulatedMaze(maze);
+	printMaze(maze);
 	//Main Loop  
 	do
 	{
@@ -469,9 +472,9 @@ int main(void)
 		//Get and organize events, like keyboard and mouse input, window resizing, etc...  
 		glfwPollEvents();
 
-		free(model);
-		free(view);
-		free(proj);
+		//free(model);
+		//free(view);
+		//free(proj);
 
 		//Has the mouse movement change been toggled?
 		if (mouseChange->arr[2] == 2.0f){

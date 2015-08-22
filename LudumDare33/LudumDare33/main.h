@@ -12,6 +12,7 @@
 #include <GLFW\glfw3.h>
 #include "matrixMath.h"
 #include "modelList.h"
+#include "maze.h"
 
 // Image importing
 #include <SOIL.h>
