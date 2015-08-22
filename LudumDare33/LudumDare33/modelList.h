@@ -1,0 +1,2 @@
+int PLANE_NUM_VERTS;
+float PLANE_VERTICES[];

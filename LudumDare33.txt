@@ -1,0 +1,44 @@
+Ideas:
+
+Chase cats and other things
+
+2d maze or 3d maze?
+
+run away from the hero
+
+make maze algorithm: row and collumn * block size = location in game
+
+have other enemies randomly spawn and hurt the hero. Last until thew hero dies
+
+make characters a little smaller than min space between walls for better movement
+
+
+Enemy:
+Instadeath or hp?
+
+
+Hero:
+HP
+Upgrades with each monster kill for difficulty scaling?
+
+
+
+Items:
+
+Speed
+Enemy Spawn Rate
+Jumping blocks?
+Stunning hero(bullet or melee)?
+
+
+Maze:
+2d array
+0 = free
+1 = enemy
+2 = hero
+3 = wall
+4 = spike
+
+
+Collision:
+Find adajcent positions in maze array and check for collisions.
